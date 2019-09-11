@@ -8,6 +8,9 @@ pipeline {
                 echo "Multiline shell steps works too"
                 ls -lah
                 '''
+                withAWS(region:'us-west-2',credentials:'AKIAXT6CDEQOZWZEUCUT') {
+                  s3Delete(bucket: 'jenkins-karim', path:'**/*')
+                  s3Upload(bucket: 'jenkins-karim', workingDir:'build', includePathPattern:'**/*');
           }
       }
     }
