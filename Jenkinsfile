@@ -9,8 +9,7 @@ pipeline {
                 ls -lah
                 '''
                 withAWS(region:'us-west-2',credentials:'aws-static') {
-                  s3Delete(bucket: 'jenkins-karim', path:'**/*')
-                  s3Upload(bucket: 'jenkins-karim', workingDir:'/', includePathPattern:'**/*');
+                s3Upload(bucket: 'jenkins-karim', workingDir:'/', includePathPattern:'**/*');
                   }
           }
       }
