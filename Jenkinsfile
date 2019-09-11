@@ -10,7 +10,7 @@ pipeline {
                 '''
                 withAWS(region:'us-west-2',credentials:'aws-static') {
                   s3Delete(bucket: 'jenkins-karim', path:'**/*')
-                  s3Upload(bucket: 'jenkins-karim', workingDir:'build', includePathPattern:'**/*');
+                  s3Upload(bucket: 'jenkins-karim', workingDir:'/', includePathPattern:'**/*');
                   }
           }
       }
