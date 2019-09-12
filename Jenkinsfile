@@ -1,27 +1,24 @@
 pipeline {
     agent any
     stages {
-        stage ('Say Hello - Build init') {
+        stage ('1st Stage: Say Hello - Build init ') {
             steps {
-                
                 sh 'echo "Hello World "'
-                
                 sh '''
                   echo "Multi-line works too!"
                   ls -lrtha
                 '''
             }
         }
-        stage ('Lint HTML') {
+        stage ('2nd Stage: Lint HTML') {
             steps {
                 sh "tidy -q -e index.html"
             }
         }
-        stage ('Upload to AWS') {
+        stage ('3rd Stage: Upload to AWS') {
             steps {
                 
                 withAWS(region:'us-west-2',credentials:'aws-static') {
-                    // do something
                     s3Upload(bucket:"jenkins-karim", file:'index.html')
                 }
             }
