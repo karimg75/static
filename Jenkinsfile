@@ -12,7 +12,6 @@ pipeline {
                 '''
             }
         }
-        }
         stage ('Upload to AWS') {
             steps {
                 
